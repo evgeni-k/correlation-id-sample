@@ -1,0 +1,12 @@
+{
+  "workspaces": [
+    "correlation-id",
+    "logger",
+    "articles-service"
+  ],
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:evgeni-k/correlation-id-sample.git",
+  "author": "Evgeni Kisel"
+}

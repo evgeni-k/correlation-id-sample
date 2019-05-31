@@ -1,0 +1,9 @@
+{
+  "name": "@samples/correlation-id",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cls-hooked": "4.2.2",
+    "uuid": "3.3.2"
+  }
+}
