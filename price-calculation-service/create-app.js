@@ -30,8 +30,9 @@ function createApp() {
         }
 
         let taxPercentage = taxes[country];
+        logger.info(`Received country ${country}`);
         if (!taxPercentage) {
-            logger.info(`falling back on default percentage. Received country ${country}`);
+            logger.info(`falling back on default percentage.`);
             taxPercentage = 0.5;
         }
 
