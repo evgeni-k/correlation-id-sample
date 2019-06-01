@@ -9,6 +9,12 @@ function createApp() {
     const app = new Koa();
     app.use(correlationIdMiddleware);
     registerRequestLoggingMiddleware(app);
+    app.use(async (ctx, next) => {
+        await new Promise((resolve) => {
+            setTimeout(resolve, Math.random() * 300);
+        });
+        await next();
+    });
     app.use(koaBody());
     const router = new Router();
 

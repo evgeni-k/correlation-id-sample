@@ -11,6 +11,11 @@ function createApp() {
 
     app.use(correlationIdMiddleware);
     app.use(requestLoggingMiddleware);
+    app.use((req, res, next) => {
+        setTimeout(() => {
+            next();
+        }, Math.random() * 300);
+    });
 
     app.get(`/articles/:id`, asyncWrap(async (req, res) => {
         const countries = [`en`, `de`, `ru`, `uk`, `by`];
