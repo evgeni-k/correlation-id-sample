@@ -2,7 +2,8 @@
   "workspaces": [
     "correlation-id",
     "logger",
-    "articles-service"
+    "articles-service",
+    "price-claculation-service"
   ],
   "private": true,
   "version": "1.0.0",

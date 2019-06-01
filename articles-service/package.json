@@ -1,5 +1,5 @@
 {
-  "name": "articles-service",
+  "name": "@samples/articles-service",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
