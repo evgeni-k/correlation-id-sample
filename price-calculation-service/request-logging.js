@@ -3,7 +3,7 @@ const {logger} = require(`./logger`);
 
 function registerRequestLoggingMiddleware(app) {
     const config = {
-        stream: {write: logger.info.bind(logger)},
+        stream: {write: (text) => logger.info(text.trim())},
     };
 
     app.use(morgan(`:method :url`, {

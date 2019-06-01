@@ -3,7 +3,7 @@ const {logger} = require(`./logger`);
 
 const morganConfig = {
     stream: {
-        write: logger.info.bind(logger),
+        write: (text) => logger.info(text.trim()),
     },
 };
 
