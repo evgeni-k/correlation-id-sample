@@ -5,7 +5,7 @@ const store = cls.createNamespace(`correlation-id-namespace`);
 
 const CORRELATION_ID_KEY = `correlation-id`;
 
-function withId(id, fn) {
+function withId(fn, id) {
     store.run(() => {
         store.set(CORRELATION_ID_KEY, id || uuid.v4());
         fn();
