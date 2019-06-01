@@ -1,14 +1,24 @@
 const Koa = require(`koa`);
 const Router = require(`koa-router`);
 const koaBody = require(`koa-body`);
+const morgan = require(`koa-morgan`);
 const {correlationIdMiddleware} = require(`./correlation-id-middleware`);
-const {registerRequestLoggingMiddleware} = require(`./request-logging`);
 const {logger} = require(`./logger`);
 
 function createApp() {
     const app = new Koa();
     app.use(correlationIdMiddleware);
-    registerRequestLoggingMiddleware(app);
+
+    app.use(morgan(`:method :url`, {
+        stream: {write: (text) => logger.info(text.trim())},
+        immediate: true,
+    }));
+
+    app.use(morgan(`:method :status :url (:res[content-length] bytes) :response-time ms`, {
+        stream: {write: (text) => logger.info(text.trim())},
+        immediate: false,
+    }));
+
     app.use(async (ctx, next) => {
         await new Promise((resolve) => {
             setTimeout(resolve, Math.random() * 300);
