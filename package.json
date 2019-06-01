@@ -3,7 +3,7 @@
     "correlation-id",
     "logger",
     "articles-service",
-    "price-claculation-service"
+    "price-calculation-service"
   ],
   "private": true,
   "version": "1.0.0",
