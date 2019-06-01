@@ -1,8 +1,10 @@
-const correlationId = require(`@samples/correlation-id`);
-const {createLogger} = require(`@samples/logger`);
+const {logger} = require(`./logger`);
+const {createApp} = require(`./create-app`);
 
-const logger = createLogger({
-    getCorrelationId: correlationId.getId,
-});
+const port = 4812;
 
-logger.info(`test`);
+createApp()
+    .listen(port, () => {
+        logger.info(`server is up and running on port ${port}`);
+    });
+

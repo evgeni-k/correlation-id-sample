@@ -3,13 +3,9 @@ const uuid = require(`uuid`);
 
 const store = cls.createNamespace(`correlation-id-namespace`);
 
-function generateDefaultId() {
-    return opts.generateDefaultId ? opts.generateDefaultId() : uuid.v4();
-}
-
 const CORRELATION_ID_KEY = `correlation-id`;
 
-function withId(fn, id) {
+function withId(id, fn) {
     store.run(() => {
         store.set(CORRELATION_ID_KEY, id || uuid.v4());
         fn();
