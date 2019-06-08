@@ -12,6 +12,7 @@ function rebindOnFinished(container) {
 async function correlationIdMiddleware(ctx, next) {
     correlator.bindEmitter(ctx.req);
     correlator.bindEmitter(ctx.res);
+    correlator.bindEmitter(ctx.req.socket);
     await new Promise((resolve, reject) => {
         correlator.withId(() => {
             rebindOnFinished(ctx.res);

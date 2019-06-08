@@ -3,6 +3,7 @@ const correlator = require(`@samples/correlation-id`);
 function correlationIdMiddleware(req, res, next) {
     correlator.bindEmitter(req);
     correlator.bindEmitter(res);
+    correlator.bindEmitter(req.socket);
 
     correlator.withId(() => {
         const currentCorrelationId = correlator.getId();
